@@ -28,7 +28,7 @@ export default {
         border-radius: 8px;
         padding: 15px;
         background-color: darkgreen;
-        border-right: 5px solid black;
+        border-right: 6px solid black;
         font-size: 14pt;
         margin: 20px;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
