@@ -1,17 +1,29 @@
 <template>
 	<div id="app">
 		<h1>Tarefas</h1>
-		<tasks-grid/>
+		<add-task></add-task>
+		<task-grid :tasks="tasks"/>
 	</div>
 </template>
 
 <script>
-import Tasks from './components/TaskGrid'
+import TaskList from '@/components/TaskGrid'
+import AddTask from '@/components/addTask'
+
 export default {
 	components: {
-		'tasks-grid': Tasks
+		'task-grid': TaskList,
+		'add-task': AddTask
 	},
-	props: ['tasks']
+
+	data () {
+        return{
+            tasks: [
+                { name: "run in the street", pending: false},
+                { name: "cook the dinner", pending: true},
+            ]
+        }
+    }
 }
 </script>
 
