@@ -31,7 +31,7 @@ export default {
 			if (reallyNew) {
 				this.tasks.push({
 					name: task.name,
-					pending: task.pending || true
+					pending: task.pending || false
 				})
 			}
 		}
