@@ -1,12 +1,26 @@
 <template>
     <div>
-        <input class="addTask" type="text"/><button class="addBtn">+</button>
+        <input class="addTask" v-model="taskName" @keyup.enter="add" type="text"/>
+        <button @click="add" class="addBtn" type="primary">+</button>
     </div>
 </template>
 
 <script>
 export default {
-    props: ['tasks']
+    props: ['tasks'],
+
+    data () {
+        return {
+            taskName: ''
+        }
+    },
+
+    methods: {
+        add () {
+            this.$emit("addItem", { name: this.taskName })
+            this.taskName = ''
+        }
+    }
 }
 </script>
 
@@ -25,5 +39,8 @@ export default {
     .addBtn{
         padding: 10px;
         width: 35px;
+        background-color: rgba(2, 255, 179, 0.212);
+        color: white;
+        border-radius: 5px; 
     }
 </style>

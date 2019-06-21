@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<h1>Tarefas</h1>
-		<add-task></add-task>
+		<add-task @addItem="addOneTask"/>
 		<task-grid :tasks="tasks"/>
 	</div>
 </template>
@@ -20,10 +20,22 @@ export default {
         return{
             tasks: [
                 { name: "run in the street", pending: false},
-                { name: "cook the dinner", pending: true},
             ]
         }
-    }
+	},
+	
+	methods: {
+		addOneTask(task){
+			const sameName = t => t.name === task.name
+			const reallyNew = this.tasks.filter(sameName).length == 0
+			if (reallyNew) {
+				this.tasks.push({
+					name: task.name,
+					pending: task.pending || true
+				})
+			}
+		}
+	}
 }
 </script>
 
