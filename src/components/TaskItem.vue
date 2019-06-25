@@ -28,7 +28,7 @@ export default {
         padding: 35px;
         background-color: darkolivegreen;
         border-right: 8px solid black;
-        border-bottom: 6px solid black;
+        border-bottom: 8px solid black;
         color: white;
         padding-right: 55px;
         font-size: 14pt;
@@ -68,7 +68,7 @@ export default {
     }
 
     .pending .close{
-        background-color: rgba(214, 4, 4, 0.548);
+        background-color: rgba(214, 4, 4, 0.671);
     }
 
     .done .close{
