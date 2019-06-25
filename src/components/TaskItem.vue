@@ -34,6 +34,7 @@ export default {
         font-size: 14pt;
         margin: 20px;
         display: flex;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -57,9 +58,8 @@ export default {
         background-color: rgba(255, 250, 240, 0.219);
         color: rgb(255, 255, 255);
         display: flex;
-        justify-content: center;
         position: relative;
-        top: -45px;
+        bottom: 35px;
         right: 25px;
         padding-left: 8px;
         padding-right: 8px;
@@ -68,7 +68,7 @@ export default {
     }
 
     .pending .close{
-        background-color: rgba(214, 4, 4, 0.671);
+        background-color: rgba(214, 4, 4, 0.548);
     }
 
     .done .close{

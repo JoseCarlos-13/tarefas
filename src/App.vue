@@ -1,6 +1,7 @@
 <template>
 	<div id="app">
 		<h1>Tarefas</h1>
+		<progress-bar :progressBar="progressBar" />
 		<add-task @addItem="addOneTask"/>
 		<task-grid 
 			@taskChangeState="toggleChangeTask"
@@ -11,22 +12,30 @@
 
 <script>
 import TaskList from '@/components/TaskGrid'
-import AddTask from '@/components/addTask'
+import AddTask from '@/components/AddTask'
+import ProgressBar from '@/components/ProgressBar'
 
 export default {
 	components: {
 		'task-grid': TaskList,
-		'add-task': AddTask
+		'add-task': AddTask,
+		'progress-bar': ProgressBar
 	},
 
 	data () {
         return{
-            tasks: [
-                { name: "run in the street", pending: false},
-            ]
+            tasks: []
         }
 	},
 	
+	computed: {
+		progressBar(){
+			const total = this.tasks.length
+			const done = this.tasks.filter(t => t.pending).length
+			return Math.round(done / total * 100) || 0
+		}	
+	},
+
 	methods: {
 		addOneTask(task){
 			const sameName = t => t.name === task.name
