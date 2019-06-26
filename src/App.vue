@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 		<h1>Tarefas</h1>
-		<progress-bar :progressBar="progressBar" />
+		<progress-bar :progressBar="progressBar"/>
 		<add-task @addItem="addOneTask"/>
 		<task-grid 
 			@taskChangeState="toggleChangeTask"
@@ -34,6 +34,21 @@ export default {
 			const done = this.tasks.filter(t => t.pending).length
 			return Math.round(done / total * 100) || 0
 		}	
+	},
+
+	watch:{
+		tasks: {
+			deep: true,
+			handler(){
+			localStorage.setItem('tasks', JSON.stringify(this.tasks))
+			}
+		}
+	},
+
+	created(){
+		const json = localStorage.getItem('tasks')
+		const array = JSON.parse(json)
+		this.tasks = Array.isArray(array) ? array : []
 	},
 
 	methods: {
